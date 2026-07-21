@@ -1,0 +1,87 @@
+configuration {
+    show-icons: true;
+    icon-theme: "Papirus";
+    font: "JetBrainsMono Nerd Font 12";
+    display-window: "Windows";
+}
+
+* {
+    bg:       #1e1e2e;
+    bg-alt:   #313244;
+    fg:       #cdd6f4;
+    accent:   #89b4fa;
+    fgalt:    #a6adc8;
+}
+
+window {
+    width: 450px;
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @accent;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+mainbox {
+    background-color: @bg;
+    children: [inputbar, listview];
+    spacing: 6px;
+}
+
+inputbar {
+    padding: 8px;
+    background-color: @bg-alt;
+    border-radius: 8px;
+    children: [prompt, entry];
+    spacing: 6px;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @accent;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: "Search...";
+    placeholder-color: @fgalt;
+}
+
+listview {
+    background-color: @bg;
+    lines: 8;
+    columns: 1;
+    spacing: 2px;
+    fixed-height: false;
+    scrollbar: false;
+}
+
+element {
+    padding: 4px 6px;
+    border-radius: 6px;
+    background-color: @bg;
+    text-color: @fg;
+    spacing: 0px;
+    children: [element-icon, element-text];
+}
+
+element selected {
+    background-color: @bg-alt;
+    text-color: @accent;
+    border: 1px solid;
+    border-color: @accent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+    margin: 0 0 0 -18px;
+}
+
+element-icon {
+    background-color: transparent;
+    size: 16px;
+    margin: 0 -10px 0 0;
+}

@@ -1,0 +1,45 @@
+version: "3"
+
+tasks:
+   update:
+      desc: Copy latest configs from ~/.config to dotfiles
+      cmds:
+         - cp -r ~/.config/hypr/* hypr/
+         - cp -r ~/.config/waybar/* waybar/
+         - cp -r ~/.config/rofi/* rofi/
+         - cp -r ~/.config/swaync/* swaync/
+         - cp -r ~/.config/wlogout/* wlogout/
+         - cp -r ~/.config/alacritty/* alacritty/
+         - cp -r ~/.config/swappy/* swappy/
+         - cp -r ~/.config/networkmanager-dmenu/* networkmanager-dmenu/
+         - cp ~/.config/fish/config.fish fish/config.fish
+         - cp ~/.config/fish/fish_plugins fish/fish_plugins
+         - echo "✓ All configs updated"
+
+   apply:
+      desc: Apply dotfiles configs to ~/.config
+      cmds:
+         - cp -r hypr/* ~/.config/hypr/
+         - cp -r waybar/* ~/.config/waybar/
+         - cp -r rofi/* ~/.config/rofi/
+         - cp -r swaync/* ~/.config/swaync/
+         - cp -r wlogout/* ~/.config/wlogout/
+         - cp -r alacritty/* ~/.config/alacritty/
+         - cp -r swappy/* ~/.config/swappy/
+         - cp -r networkmanager-dmenu/* ~/.config/networkmanager-dmenu/
+         - cp fish/config.fish ~/.config/fish/config.fish
+         - cp fish/fish_plugins ~/.config/fish/fish_plugins
+         - echo "✓ All configs applied"
+
+   reload:
+      desc: Restart Waybar and SwayNC
+      cmds:
+         - |
+            killall waybar 2>/dev/null || true
+            sleep 1
+            nohup waybar >/dev/null 2>&1 &
+         - |
+            killall swaync 2>/dev/null || true
+            sleep 1
+            nohup swaync >/dev/null 2>&1 &
+         - echo "✓ Waybar and SwayNC restarted"

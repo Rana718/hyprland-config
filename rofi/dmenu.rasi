@@ -1,0 +1,69 @@
+* {
+    bg:     #1e1e2ecc;
+    bg-alt: #313244cc;
+    fg:     #cdd6f4;
+    accent: #89b4fa;
+    fgalt:  #6c7086;
+    selected: #45475acc;
+}
+
+window {
+    width: 350px;
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @accent;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+    spacing: 6px;
+}
+
+inputbar {
+    padding: 8px;
+    background-color: @bg-alt;
+    border-radius: 8px;
+    children: [prompt, entry];
+    spacing: 6px;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @accent;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: "Type to filter...";
+    placeholder-color: @fgalt;
+}
+
+listview {
+    background-color: transparent;
+    lines: 12;
+    columns: 1;
+    spacing: 0px;
+    fixed-height: false;
+    scrollbar: false;
+}
+
+element {
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: @fg;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}

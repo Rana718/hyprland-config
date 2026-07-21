@@ -1,0 +1,199 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #cdd6f4;
+}
+
+/* ─── Left modules (system stats) ─────────────────────────────────── */
+
+#custom-arch-logo {
+    font-size: 15px;
+    color: #89b4fa;
+    padding: 0 8px;
+    margin: 3px 2px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#custom-arch-logo:hover {
+    background: rgba(137, 180, 250, 0.2);
+}
+
+#cpu {
+    color: #89b4fa;
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#custom-cpu-temp {
+    color: #a6e3a1;
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#memory {
+    color: #cba6f7;
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#custom-gpu-usage {
+    color: #a6e3a1;
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#custom-gpu-temp {
+    color: #f9e2af;
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+/* ─── Center (workspaces) ─────────────────────────────────────────── */
+
+#workspaces {
+    background: rgba(30, 30, 46, 0.75);
+    border-radius: 20px;
+    padding: 0 4px;
+    margin: 3px 0;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    color: #6c7086;
+    border-radius: 20px;
+    margin: 2px 2px;
+    background: transparent;
+    font-size: 10px;
+}
+
+#workspaces button.active {
+    color: #89b4fa;
+    background: rgba(137, 180, 250, 0.15);
+}
+
+#workspaces button:hover {
+    background: rgba(137, 180, 250, 0.1);
+}
+
+/* ─── Right modules (system tray like GNOME) ──────────────────────── */
+
+#network,
+#pulseaudio,
+#backlight,
+#battery {
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#network {
+    color: #89dceb;
+}
+
+#network.disconnected {
+    color: #6c7086;
+}
+
+#pulseaudio {
+    color: #f5c2e7;
+}
+
+#pulseaudio.muted {
+    color: #6c7086;
+}
+
+#backlight {
+    color: #f9e2af;
+}
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.warning {
+    color: #f9e2af;
+}
+
+#battery.critical {
+    color: #f38ba8;
+    animation: blink 1s linear infinite;
+}
+
+#clock {
+    color: #cdd6f4;
+    font-weight: bold;
+    padding: 0 10px;
+    margin: 3px 2px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#tray {
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#custom-separator {
+    color: #45475a;
+    padding: 0 0px;
+    margin: 0;
+    background: transparent;
+}
+
+@keyframes blink {
+    to {
+        color: #f38ba8;
+        background: rgba(243, 139, 168, 0.15);
+    }
+}
+
+#custom-netspeed {
+    color: #89dceb;
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#network-speed {
+    color: #89dceb;
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#bluetooth {
+    color: #89b4fa;
+    padding: 0 6px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}
+
+#pulseaudio.microphone {
+    color: #f38ba8;
+    padding: 0 9px 0 9px;
+    margin: 3px 1px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+}

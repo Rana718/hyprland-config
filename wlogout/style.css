@@ -1,0 +1,53 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    background-image: none;
+    font-size: 14px;
+}
+
+window {
+    background-color: rgba(30, 30, 46, 0.92);
+}
+
+button {
+    color: #cba6f7;
+    background-color: rgba(49, 50, 68, 0.6);
+    border: 2px solid rgba(203, 166, 247, 0.3);
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-position: center 35%;
+    background-size: 20%;
+    margin: 20px 30px;
+    padding: 0 0 30px 0;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: rgba(203, 166, 247, 0.12);
+    border: 2px solid rgba(203, 166, 247, 0.6);
+    outline-style: none;
+}
+
+button:focus {
+    background-color: rgba(203, 166, 247, 0.12);
+    border: 2px solid rgba(203, 166, 247, 0.8);
+}
+
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"));
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"));
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"));
+}
