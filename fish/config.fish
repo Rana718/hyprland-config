@@ -133,3 +133,4 @@ alias zed='zeditor'
 if test -f ~/.fish_profile
     source ~/.fish_profile
 end
+fish_add_path /opt/joern/joern-cli/bin
