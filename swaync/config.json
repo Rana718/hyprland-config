@@ -17,5 +17,30 @@
     "image-visibility": "when-available",
     "transition-time": 200,
     "hide-on-clear": true,
-    "hide-on-action": true
+    "hide-on-action": true,
+    "widgets": [
+        "calendar",
+        "dnd",
+        "title",
+        "notifications"
+    ],
+    "widget-config": {
+        "calendar": {
+            "show-day-label": true,
+            "show-date-label": true,
+            "show-heading": true,
+            "show-day-names": true,
+            "show-week-numbers": false,
+            "day-format": "%A",
+            "date-format": "%d %B %Y"
+        },
+        "title": {
+            "text": "Notifications",
+            "clear-all-button": true,
+            "button-text": "Clear All"
+        },
+        "dnd": {
+            "text": "Do Not Disturb"
+        }
+    }
 }

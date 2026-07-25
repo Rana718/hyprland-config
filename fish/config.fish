@@ -1,6 +1,18 @@
 # ─── Fish Shell Config ───────────────────────────────────────────────────────
 # Portable config — works on Arch, Ubuntu/Debian, Fedora, NixOS, macOS
 
+# ─── Android Emulator ────────────────────────────────────────────────────────
+function emulator
+    env DISPLAY=:1 QT_QPA_PLATFORM=xcb prime-run /run/media/rana/DEV/andriod/sdk/emulator/emulator $argv &
+    sleep 7
+    # Float then move toolbar off screen
+    hyprctl dispatch focuswindow "title:Emulator"
+    hyprctl dispatch togglefloating
+    hyprctl dispatch moveactive exact -9999 -9999
+    # Refocus phone window
+    hyprctl dispatch focuswindow "title:Android Emulator"
+end
+
 # ─── Locale ──────────────────────────────────────────────────────────────────
 set -x LANG en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
@@ -134,3 +146,4 @@ if test -f ~/.fish_profile
     source ~/.fish_profile
 end
 fish_add_path /opt/joern/joern-cli/bin
+fish_add_path ~/fvm/bin

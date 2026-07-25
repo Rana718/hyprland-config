@@ -74,10 +74,10 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0 6px;
+    padding: 0 3px;
     color: #6c7086;
     border-radius: 20px;
-    margin: 2px 2px;
+    margin: 2px 1px;
     background: transparent;
     font-size: 10px;
 }

@@ -1,10 +1,11 @@
 [Default]
 save_dir=/home/rana/Pictures/Screenshots
-save_filename_format=screenshot_%Y%m%d_%H%M%S.png
+save_filename_format=shot_%H%M%S_%d%m%y.png
 show_panel=true
 line_size=5
 text_size=20
 text_font=sans-serif
 paint_mode=brush
-early_exit=false
+early_exit=true
 fill_shape=false
+auto_save=false

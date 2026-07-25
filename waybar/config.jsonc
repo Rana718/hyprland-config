@@ -49,8 +49,7 @@
         }
     },
     "clock": {
-        "format": " {:%I:%M %p}",
-        "format-alt": " {:%A, %d %B %Y}",
+        "format": " {:%d/%m   %I:%M %p}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "on-click": "swaync-client -t -sw"
     },
