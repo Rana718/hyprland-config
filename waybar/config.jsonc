@@ -48,7 +48,7 @@
     },
     "hyprland/workspaces": {
         "format": "{id}",
-        "on-click": "activate",
+        "on-click": "hyprctl eval 'hl.dsp.focus({workspace={id}})'",
         "sort-by-number": true,
         "active-only": false,
         "all-outputs": false,
