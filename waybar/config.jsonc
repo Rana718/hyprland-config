@@ -8,6 +8,7 @@
     "margin-right": 8,
     "modules-left": [
         "custom/arch-logo",
+        "custom/power-profile",
         "custom/separator",
         "custom/gpu-temp",
         "cpu",
@@ -33,6 +34,13 @@
         "format": " ",
         "tooltip": false,
         "on-click": "rofi -show drun -show-icons"
+    },
+    "custom/power-profile": {
+        "exec": "profile=$(powerprofilesctl get); case $profile in performance) echo '{\"text\": \"󱐋 perf\", \"tooltip\": \"Performance\", \"class\": \"performance\"}';;  balanced) echo '{\"text\": \"󰾅 bal\", \"tooltip\": \"Balanced\", \"class\": \"balanced\"}';;  power-saver) echo '{\"text\": \"󰾆 saver\", \"tooltip\": \"Power Saver\", \"class\": \"power-saver\"}';;  esac",
+        "return-type": "json",
+        "interval": 2,
+        "on-click": "profile=$(powerprofilesctl get); case $profile in performance) powerprofilesctl set balanced;; balanced) powerprofilesctl set power-saver;; power-saver) powerprofilesctl set performance;; esac",
+        "tooltip": true
     },
     "custom/separator": {
         "format": "|",

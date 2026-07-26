@@ -24,6 +24,26 @@ window#waybar {
     background: rgba(137, 180, 250, 0.2);
 }
 
+#custom-power-profile {
+    padding: 0 8px;
+    margin: 3px 2px;
+    border-radius: 8px;
+    background: rgba(30, 30, 46, 0.75);
+    font-size: 12px;
+}
+
+#custom-power-profile.performance {
+    color: #f38ba8;
+}
+
+#custom-power-profile.balanced {
+    color: #a6e3a1;
+}
+
+#custom-power-profile.power-saver {
+    color: #89b4fa;
+}
+
 #cpu {
     color: #89b4fa;
     padding: 0 6px;
