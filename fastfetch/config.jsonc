@@ -1,0 +1,99 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+
+    "logo": {
+        "source": "~/.config/fastfetch/tux.txt",
+        "type": "file-raw",
+        "width": 20,
+        "padding": {
+            "top": 0,
+            "left": 2,
+            "right": 3
+        }
+    },
+
+    "display": {
+        "separator": "  ",
+        "color": {
+            "keys": "cyan",
+            "title": "cyan"
+        }
+    },
+
+    "modules": [
+        // ── Title ─────────────────────────────────────────
+        {
+            "type": "title",
+            "format": "\u001b[1;36m{user-name}\u001b[0m\u001b[38;5;240m@\u001b[0m\u001b[1;35m{host-name}\u001b[0m"
+        },
+        {
+            "type": "separator",
+            "string": "━",
+            "color": "bright_black"
+        },
+
+        // ── System ────────────────────────────────────────
+        {
+            "type": "os",
+            "key": "󰣇  OS",
+            "keyColor": "blue"
+        },
+        {
+            "type": "kernel",
+            "key": "󰌢  Kernel",
+            "keyColor": "blue"
+        },
+        {
+            "type": "uptime",
+            "key": "󰅐  Uptime",
+            "keyColor": "green"
+        },
+        {
+            "type": "packages",
+            "key": "󰏖  Packages",
+            "keyColor": "green"
+        },
+
+        // ── Hardware ──────────────────────────────────────
+        {
+            "type": "cpu",
+            "key": "󰻠  CPU",
+            "keyColor": "yellow",
+            "temp": false
+        },
+        {
+            "type": "gpu",
+            "key": "󰍛  GPU",
+            "keyColor": "yellow",
+            "detectionMethod": "pci"
+        },
+        {
+            "type": "memory",
+            "key": "󰑭  Memory",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "swap",
+            "key": "󰓡  Swap",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "disk",
+            "key": "󰋊  Disk (/)",
+            "keyColor": "cyan",
+            "folders": "/"
+        },
+        {
+            "type": "disk",
+            "key": "󱊞  Dev Drive",
+            "keyColor": "cyan",
+            "folders": "/run/media/rana/DEV"
+        },
+
+        {
+            "type": "colors",
+            "symbol": "circle",
+            "paddingLeft": 1
+        }
+    ]
+}

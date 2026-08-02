@@ -5,6 +5,7 @@ tasks:
       desc: Copy latest configs from ~/.config to dotfiles
       cmds:
          - cp -r ~/.config/hypr/* hypr/
+         - cp -r ~/.config/fastfetch/* fastfetch/
          - cp -r ~/.config/waybar/* waybar/
          - cp -r ~/.config/rofi/* rofi/
          - cp -r ~/.config/swaync/* swaync/
@@ -22,6 +23,7 @@ tasks:
       desc: Apply dotfiles configs to ~/.config
       cmds:
          - cp -r hypr/* ~/.config/hypr/
+         - cp -r fastfetch/* ~/.config/fastfetch/
          - cp -r waybar/* ~/.config/waybar/
          - cp -r rofi/* ~/.config/rofi/
          - cp -r swaync/* ~/.config/swaync/
