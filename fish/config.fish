@@ -147,3 +147,6 @@ if test -f ~/.fish_profile
 end
 fish_add_path /opt/joern/joern-cli/bin
 fish_add_path ~/fvm/bin
+
+# ─── Monero GUI ──────────────────────────────────────────────────────────────
+alias monero='QT_QPA_PLATFORM=xcb ~/Downloads/monero-gui-v0.18.5.2/monero-wallet-gui'
