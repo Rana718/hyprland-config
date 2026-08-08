@@ -15,6 +15,10 @@ tasks:
          - cp -r ~/.config/networkmanager-dmenu/* networkmanager-dmenu/
          - cp ~/.config/fish/config.fish fish/config.fish
          - cp ~/.config/fish/fish_plugins fish/fish_plugins
+         - cp -r ~/.config/kitty/* kitty/
+         - cp -r ~/.config/nvim/init.lua nvim/init.lua
+         - cp -r ~/.config/nvim/lua nvim/lua
+         - cp -r ~/.config/nvim/plugin nvim/plugin
          - sudo cp /usr/share/sddm/themes/sugar-candy/theme.conf sddm/theme.conf
          - sudo cp /etc/sddm.conf.d/theme.conf sddm/sddm.conf
          - echo "✓ All configs updated"
@@ -33,6 +37,8 @@ tasks:
          - cp -r networkmanager-dmenu/* ~/.config/networkmanager-dmenu/
          - cp fish/config.fish ~/.config/fish/config.fish
          - cp fish/fish_plugins ~/.config/fish/fish_plugins
+         - mkdir -p ~/.config/kitty && cp -r kitty/* ~/.config/kitty/
+         - mkdir -p ~/.config/nvim && cp nvim/init.lua ~/.config/nvim/init.lua && cp -r nvim/lua ~/.config/nvim/ && cp -r nvim/plugin ~/.config/nvim/
          - sudo cp sddm/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
          - sudo cp sddm/sddm.conf /etc/sddm.conf.d/theme.conf
          - echo "✓ All configs applied"

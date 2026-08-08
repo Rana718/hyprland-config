@@ -3,7 +3,7 @@
 -- ══════════════════════════════════════════════════════════════════════════════
 
 -- ─── Programs (used in keybinds) ─────────────────────────────────────────────
-TERMINAL     = "alacritty"
+TERMINAL     = "kitty"
 FILE_MANAGER = "thunar"
 BROWSER      = "firefox"
 MENU         = "rofi -show drun -show-icons"
