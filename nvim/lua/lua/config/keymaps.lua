@@ -52,7 +52,7 @@ map("t", "<C-\\>", "<cmd>Flterm<CR>", { desc = "Toggle terminal" })
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Exit terminal mode" })
 
 -- Multiple terminals: Ctrl+Tab to cycle, Ctrl+w to close
-map("t", "<C-Tab>", "<cmd>FlternNext<CR>", { desc = "Next terminal" })
+map("t", "<C-`>", "<cmd>FlternNext<CR>", { desc = "Next terminal" })
 map("t", "<C-w>", "<cmd>FlternClose<CR>", { desc = "Close terminal" })
 map("n", "<C-S-\\>", "<cmd>FlternNew<CR>", { desc = "New terminal" })
 
