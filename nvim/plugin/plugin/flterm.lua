@@ -238,6 +238,12 @@ end, { noremap = true, silent = true, desc = "New terminal" })
 -- Esc Esc to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode" })
 
+-- Paste from system clipboard inside terminal (Ctrl+Shift+V)
+vim.keymap.set("t", "<C-S-v>", function()
+   local text = vim.fn.getreg("+")
+   vim.api.nvim_feedkeys(text, "t", true)
+end, { noremap = true, silent = true, desc = "Paste in terminal" })
+
 -- Normal mode: Ctrl+` context-aware (buffer picker or hide terminal)
 vim.keymap.set("n", "<C-`>", function()
    if any_terminal_visible() then

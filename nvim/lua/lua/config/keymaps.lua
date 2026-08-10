@@ -77,6 +77,9 @@ map("n", "N", "Nzzzv", { desc = "Prev match centered" })
 map("x", "<leader>p", [["_dP]], { desc = "Paste without overwrite" })
 map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to void" })
 
+-- dd deletes line without copying to register
+map("n", "dd", [["_dd]], { desc = "Delete line (no copy)" })
+
 -- Disable Q (Ex mode)
 map("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 
