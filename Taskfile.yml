@@ -17,6 +17,7 @@ tasks:
          - cp ~/.config/fish/fish_plugins fish/fish_plugins
          - cp -r ~/.config/kitty/* kitty/
          - cp -r ~/.config/nvim/init.lua nvim/init.lua
+         - cp -r ~/.config/nvim/KEYBINDINGS.md nvim/KEYBINDINGS.md
          - cp -r ~/.config/nvim/lua nvim/lua
          - cp -r ~/.config/nvim/plugin nvim/plugin
          - sudo cp /usr/share/sddm/themes/sugar-candy/theme.conf sddm/theme.conf

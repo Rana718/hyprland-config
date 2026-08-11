@@ -123,17 +123,19 @@ map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase width" })
 -- Clear highlight
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
+-- Global search (like Zed Ctrl+G)
+map("n", "<C-g>", function()
+   require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+end, { desc = "Global search with prompt" })
+map("n", "<C-g><C-w>", "<cmd>Telescope grep_string<CR>", { desc = "Global search word under cursor" })
+
 -----------------------------------------------------------
 -- TELESCOPE
 -----------------------------------------------------------
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
-map("n", "<leader>fg", function()
-   require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
-end, { desc = "Grep search" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Help tags" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Recent files" })
-map("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", { desc = "Find current string" })
 map("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", { desc = "Quickfix" })
 map("n", "<leader>fm", function()
    require("telescope.builtin").man_pages({ sections = { "ALL" } })
