@@ -1,53 +1,85 @@
+/* ═══════════════════════════════════════════════════════════
+   wlogout - Clean Compact Theme
+   No overlap, proper spacing, smooth animations
+   ═══════════════════════════════════════════════════════════ */
+
 * {
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "JetBrainsMono Nerd Font", "CaskaydiaCove Nerd Font", monospace;
     background-image: none;
-    font-size: 14px;
 }
 
 window {
-    background-color: rgba(30, 30, 46, 0.92);
+    background-color: rgba(17, 17, 27, 0.88);
 }
 
 button {
-    color: #cba6f7;
-    background-color: rgba(49, 50, 68, 0.6);
-    border: 2px solid rgba(203, 166, 247, 0.3);
-    border-radius: 20px;
+    /* Text styling */
+    color: #bac2de;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    /* Icon positioning - icon on top, text at bottom */
     background-repeat: no-repeat;
-    background-position: center 35%;
-    background-size: 20%;
-    margin: 20px 30px;
-    padding: 0 0 30px 0;
-    transition: all 0.3s ease;
+    background-position: center 30%;
+    background-size: 35%;
+
+    /* Box model - small compact buttons */
+    border: 2px solid rgba(88, 91, 112, 0.3);
+    border-radius: 16px;
+    background-color: rgba(30, 30, 46, 0.6);
+    margin: 8px;
+    padding-top: 60px;
+
+    /* Animation */
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 button:hover {
-    background-color: rgba(203, 166, 247, 0.12);
-    border: 2px solid rgba(203, 166, 247, 0.6);
-    outline-style: none;
+    background-color: rgba(137, 180, 250, 0.1);
+    border: 2px solid rgba(137, 180, 250, 0.6);
+    color: #89b4fa;
+    border-radius: 20px;
+    text-shadow: 0px 0px 6px rgba(137, 180, 250, 0.4);
+    box-shadow: 0px 0px 16px rgba(137, 180, 250, 0.12),
+                inset 0px 0px 10px rgba(137, 180, 250, 0.04);
 }
 
 button:focus {
-    background-color: rgba(203, 166, 247, 0.12);
-    border: 2px solid rgba(203, 166, 247, 0.8);
+    background-color: rgba(137, 180, 250, 0.12);
+    border: 2px solid rgba(137, 180, 250, 0.8);
+    color: #89b4fa;
+    outline: none;
 }
 
+button:active {
+    background-color: rgba(137, 180, 250, 0.2);
+    border: 2px solid #89b4fa;
+    transition: all 0.08s ease;
+}
+
+/* ─── Individual Button Icons ─── */
+
 #lock {
-    background-image: image(url("/usr/share/wlogout/icons/lock.png"));
+    background-image: image(url("/home/rana/.config/wlogout/icons/padlock.png"));
 }
 
 #logout {
-    background-image: image(url("/usr/share/wlogout/icons/logout.png"));
+    background-image: image(url("/home/rana/.config/wlogout/icons/exit.png"));
 }
 
 #suspend {
-    background-image: image(url("/usr/share/wlogout/icons/suspend.png"));
+    background-image: image(url("/home/rana/.config/wlogout/icons/sleeping.png"));
+}
+
+#hibernate {
+    background-image: image(url("/home/rana/.config/wlogout/icons/hibernate.png"));
 }
 
 #reboot {
-    background-image: image(url("/usr/share/wlogout/icons/reboot.png"));
+    background-image: image(url("/home/rana/.config/wlogout/icons/reboot.png"));
 }
 
 #shutdown {
-    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"));
+    background-image: image(url("/home/rana/.config/wlogout/icons/power.png"));
 }

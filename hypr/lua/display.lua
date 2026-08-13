@@ -61,8 +61,8 @@ hl.config({
    animations = { enabled = true },
    dwindle = { preserve_split = true, smart_split = true },
    general = {
-      gaps_in     = 2,
-      gaps_out    = 6,
+      gaps_in       = 4,
+      gaps_out      = 8,
       border_size   = 1,
       col           = {
          active_border   = { colors = { "rgba(89b4faee)", "rgba(cba6f7ee)" }, angle = 45 },

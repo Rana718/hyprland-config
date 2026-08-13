@@ -51,6 +51,12 @@ hl.bind("CTRL + ALT + left", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind("CTRL + SUPER + ALT + right", hl.dsp.window.move({ workspace = "e+1" }))
 hl.bind("CTRL + SUPER + ALT + left", hl.dsp.window.move({ workspace = "e-1" }))
 
+-- Move to free (empty) workspace with CTRL+SHIFT+ALT+Arrow
+for arrow, _ in pairs(dirs) do
+   hl.bind("CTRL + SHIFT + ALT + " .. arrow, hl.dsp.focus({ workspace = "empty" }))
+   hl.bind("CTRL + SHIFT + ALT + SUPER + " .. arrow, hl.dsp.window.move({ workspace = "empty" }))
+end
+
 -- Special workspace
 hl.bind(mod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))

@@ -10,9 +10,9 @@ local float_classes = {
    { "^(copyq)$",                                    { 600, 600 } },
    { "^(pavucontrol)$",                              { 900, 600 } },
    { "^(org.pulseaudio.pavucontrol)$",               { 900, 600 } },
-   { "^(nm-connection-editor)$",                     nil          },
-   { "^(blueman-manager)$",                          nil          },
-   { "^(org.hyprland.xdg-desktop-portal-hyprland)$", nil          },
+   { "^(nm-connection-editor)$",                     nil },
+   { "^(blueman-manager)$",                          nil },
+   { "^(org.hyprland.xdg-desktop-portal-hyprland)$", nil },
 }
 for _, r in ipairs(float_classes) do
    local rule = { match = { class = r[1] }, float = true }
@@ -36,15 +36,19 @@ end
 
 -- ─── Firefox Picture-in-Picture ──────────────────────────────────────────────
 hl.window_rule({
-   match             = { class = "^(firefox)$", title = "^(Picture-in-Picture)$" },
-   float             = true, pin = true, no_initial_focus = true,
-   focus_on_activate = false, size = { 350, 200 }, opacity = OPAQUE,
+   match = { class = "^(firefox)$", title = "^(Picture-in-Picture)$" },
+   float = true,
+   pin = true,
+   no_initial_focus = true,
+   focus_on_activate = false,
+   size = { 350, 200 },
+   opacity = OPAQUE,
 })
 
 -- ─── Google Login Popups ─────────────────────────────────────────────────────
 for _, title_key in ipairs({
-   { title         = "^(Sign in - Google Accounts - Google Chrome)$" },
-   { initial_title = "^(Untitled - Google Chrome)$"                  },
+   { title = "^(Sign in - Google Accounts - Google Chrome)$" },
+   { initial_title = "^(Untitled - Google Chrome)$" },
 }) do
    local match = { class = "^(google-chrome)$" }
    for k, v in pairs(title_key) do match[k] = v end
@@ -59,9 +63,12 @@ end
 -- ─── Layer Rules ─────────────────────────────────────────────────────────────
 local layer_rules = {
    { "waybar", 0.05 },
-   { "rofi",   0.5  },
-   { "swaync", 0.5  },
+   { "rofi",   0.5 },
+   { "swaync", 0.5 },
 }
 for _, r in ipairs(layer_rules) do
    hl.layer_rule({ match = { namespace = r[1] }, blur = true, ignore_alpha = r[2] })
 end
+
+-- Fix: Ensure rofi popups render above waybar and receive mouse input
+hl.layer_rule({ match = { namespace = "rofi" }, order = 1 })
