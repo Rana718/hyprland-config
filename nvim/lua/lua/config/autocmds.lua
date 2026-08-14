@@ -45,3 +45,16 @@ autocmd({ "InsertLeave", "TextChanged" }, {
       end
    end,
 })
+
+-- Refresh nvim-tree git status after file save
+autocmd("BufWritePost", {
+   group = augroup("NvimTreeGitRefresh", { clear = true }),
+   callback = function()
+      vim.defer_fn(function()
+         local ok, api = pcall(require, "nvim-tree.api")
+         if ok and api.tree.is_visible() then
+            api.tree.reload()
+         end
+      end, 200)
+   end,
+})

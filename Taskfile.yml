@@ -16,6 +16,7 @@ tasks:
          - cp ~/.config/fish/config.fish fish/config.fish
          - cp ~/.config/fish/fish_plugins fish/fish_plugins
          - cp -r ~/.config/kitty/* kitty/
+         - cp ~/.config/btop/btop.conf btop/ && cp -r ~/.config/btop/themes/* btop/themes/
          - cp -r ~/.config/nvim/init.lua nvim/init.lua
          - cp -r ~/.config/nvim/KEYBINDINGS.md nvim/KEYBINDINGS.md
          - cp -r ~/.config/nvim/lua nvim/lua
@@ -39,6 +40,7 @@ tasks:
          - cp fish/config.fish ~/.config/fish/config.fish
          - cp fish/fish_plugins ~/.config/fish/fish_plugins
          - mkdir -p ~/.config/kitty && cp -r kitty/* ~/.config/kitty/
+         - mkdir -p ~/.config/btop/themes && cp btop/btop.conf ~/.config/btop/ && cp -r btop/themes/* ~/.config/btop/themes/
          - mkdir -p ~/.config/nvim && cp nvim/init.lua ~/.config/nvim/init.lua && cp -r nvim/lua ~/.config/nvim/ && cp -r nvim/plugin ~/.config/nvim/
          - sudo cp sddm/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
          - sudo cp sddm/sddm.conf /etc/sddm.conf.d/theme.conf

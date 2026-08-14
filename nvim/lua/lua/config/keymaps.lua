@@ -1,157 +1,141 @@
 local map = vim.keymap.set
 
 -----------------------------------------------------------
--- ZED KEYBINDINGS (priority - do not change)
+-- INSERT MODE
 -----------------------------------------------------------
+map("i", "<C-c>", "<Esc>", { desc = "Escape" })
+map("i", "<C-v>", '<Esc>"+pa', { desc = "Paste from clipboard" })
+map("i", "<C-x>", "<Esc>ddi", { desc = "Cut line" })
+map("i", "<C-y>", "<cmd>redo<CR>", { desc = "Redo" })
+map("i", "<C-a>", "<Esc>ggVG", { desc = "Select all" })
+map("i", "<C-p>", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
+map("i", "<C-b>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree" })
 
--- Insert mode (Zed: Editor && vim_mode == insert)
-map("i", "<C-c>", "<Esc>", { desc = "Escape (Zed)" })
-map("i", "<C-v>", '<Esc>"+pa', { desc = "Paste (Zed)" })
-map("i", "<C-x>", "<Esc>ddi", { desc = "Cut line (Zed)" })
-map("i", "<C-y>", "<cmd>redo<CR>", { desc = "Redo (Zed)" })
-map("i", "<C-a>", "<Esc>ggVG", { desc = "Select all (Zed)" })
-map("i", "<C-p>", "<cmd>Telescope find_files<CR>", { desc = "Find files (Zed)" })
-map("i", "<C-b>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle tree (Zed)" })
-
--- Normal mode (Zed: Editor && vim_mode == normal)
-map("n", "'", ";", { desc = "Repeat find (Zed)" })
-map("n", "U", "<C-r>", { desc = "Redo (Zed)" })
-map("n", "gn", "gn", { desc = "Select all matches (Zed)" })
+-----------------------------------------------------------
+-- NORMAL MODE - GENERAL
+-----------------------------------------------------------
+map("n", "'", ";", { desc = "Repeat find" })
+map("n", "U", "<C-r>", { desc = "Redo" })
+map("n", "gn", "gn", { desc = "Select next match" })
 map("n", "<leader>f", function()
    require("conform").format({ async = true, lsp_format = "fallback" })
-end, { desc = "Format (Zed)" })
-map("n", "<leader>i", "<cmd>lua vim.lsp.buf.code_action({context={only={'source.organizeImports'}}})<CR>", { desc = "Organize imports (Zed)" })
-map("n", "<leader>j", vim.diagnostic.goto_next, { desc = "Next diagnostic (Zed)" })
-map("n", "<leader>'", vim.diagnostic.goto_prev, { desc = "Prev diagnostic (Zed)" })
-map("n", "<leader>p", "<cmd>Telescope commands<CR>", { desc = "Command palette (Zed)" })
-map("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle tree focus (Zed)" })
-map("n", "<leader>\\", "<cmd>NvimTreeCollapseAll<CR>", { desc = "Collapse tree (Zed)" })
-map("n", "<leader>o", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Outline (Zed)" })
-map("n", "<leader>w", "<cmd>bd<CR>", { desc = "Close buffer (Zed)" })
+end, { desc = "Format file" })
+map("n", "<leader>i", "<cmd>lua vim.lsp.buf.code_action({context={only={'source.organizeImports'}}})<CR>", { desc = "Organize imports" })
+map("n", "<leader>j", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "<leader>'", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
+map("n", "<leader>p", "<cmd>Telescope commands<CR>", { desc = "Command palette" })
+map("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle tree + focus file" })
+map("n", "<leader>\\", "<cmd>NvimTreeCollapseAll<CR>", { desc = "Collapse file tree" })
+map("n", "<leader>o", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Symbol outline" })
+map("n", "<leader>w", "<cmd>bd<CR>", { desc = "Close buffer" })
 map("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
-map("n", "<leader>qa", "<cmd>qa!<CR>", { desc = "Close all (Zed)" })
+map("n", "<leader>qa", "<cmd>qa!<CR>", { desc = "Close all" })
 map("n", "<A-q>", "<cmd>qa!<CR>", { desc = "Force quit nvim" })
 
--- Editor bindings (Zed)
-map("n", "<C-[>", "zc", { desc = "Fold (Zed)" })
-map("n", "<C-]>", "zo", { desc = "Unfold (Zed)" })
-map("n", "<C-A-[>", "zM", { desc = "Fold all (Zed)" })
-map("n", "<C-A-]>", "zR", { desc = "Unfold all (Zed)" })
-
--- Global (Zed)
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle left panel (Zed)" })
-map("n", "<C-k>", "<C-w>k", { desc = "Activate pane up (Zed)" })
-map("n", "<A-r>", "<cmd>Telescope oldfiles<CR>", { desc = "Open recent (Zed)" })
+-----------------------------------------------------------
+-- FOLDING
+-----------------------------------------------------------
+map("n", "<C-[>", "zc", { desc = "Fold block" })
+map("n", "<C-]>", "zo", { desc = "Unfold block" })
+map("n", "<C-A-[>", "zM", { desc = "Fold all" })
+map("n", "<C-A-]>", "zR", { desc = "Unfold all" })
 
 -----------------------------------------------------------
--- TERMINAL (floating, like tonybanters/Zed style)
+-- PANELS & NAVIGATION
 -----------------------------------------------------------
-map("n", "<leader>ft", "<cmd>Flterm<CR>", { desc = "Floating terminal" })
+map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree" })
+map("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
+map("n", "<A-r>", "<cmd>Telescope oldfiles<CR>", { desc = "Open recent files" })
+map("n", "<C-r>", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file tree" })
+map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+
+-----------------------------------------------------------
+-- TERMINAL
+-----------------------------------------------------------
+map("n", "<leader>ft", "<cmd>Flterm<CR>", { desc = "Open floating terminal" })
 map("n", "<C-\\>", "<cmd>Flterm<CR>", { desc = "Toggle terminal" })
 map("t", "<C-\\>", "<cmd>Flterm<CR>", { desc = "Toggle terminal" })
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Exit terminal mode" })
-
--- Multiple terminals: Ctrl+Tab to cycle, Ctrl+w to close
 map("t", "<C-`>", "<cmd>FlternNext<CR>", { desc = "Next terminal" })
 map("t", "<C-w>", "<cmd>FlternClose<CR>", { desc = "Close terminal" })
 map("n", "<C-S-\\>", "<cmd>FlternNew<CR>", { desc = "New terminal" })
 
 -----------------------------------------------------------
--- TONYBANTERS STYLE BINDINGS
+-- EDITING
 -----------------------------------------------------------
-
--- Move lines in visual mode
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
-
--- Join lines (keep cursor)
 map("n", "J", "mzJ`z", { desc = "Join lines (keep cursor)" })
-
--- Centered scrolling
-map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down centered" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up centered" })
-map("n", "n", "nzzzv", { desc = "Next match centered" })
-map("n", "N", "Nzzzv", { desc = "Prev match centered" })
-
--- Paste without overwrite
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down (centered)" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up (centered)" })
+map("n", "n", "nzzzv", { desc = "Next match (centered)" })
+map("n", "N", "Nzzzv", { desc = "Prev match (centered)" })
 map("x", "<leader>p", [["_dP]], { desc = "Paste without overwrite" })
-map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to void" })
+map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to void register" })
+map("n", "dd", [["_dd]], { desc = "Delete line (no yank)" })
+map("n", "Q", "<nop>", { desc = "Disabled" })
 
--- dd deletes line without copying to register
-map("n", "dd", [["_dd]], { desc = "Delete line (no copy)" })
-
--- Disable Q (Ex mode)
-map("n", "Q", "<nop>", { desc = "Disable Ex mode" })
-
--- Quickfix navigation
-map("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
+-----------------------------------------------------------
+-- QUICKFIX
+-----------------------------------------------------------
+map("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
 map("n", "<leader>cl", ":cclose<CR>", { silent = true, desc = "Close quickfix" })
 map("n", "<leader>co", ":copen<CR>", { silent = true, desc = "Open quickfix" })
-map("n", "<leader>cn", ":cnext<CR>zz", { desc = "Next quickfix" })
-map("n", "<leader>cp", ":cprev<CR>zz", { desc = "Prev quickfix" })
+map("n", "<leader>cn", ":cnext<CR>zz", { desc = "Next quickfix item" })
+map("n", "<leader>cp", ":cprev<CR>zz", { desc = "Prev quickfix item" })
 
--- Replace word under cursor
+-----------------------------------------------------------
+-- SEARCH & REPLACE
+-----------------------------------------------------------
 map("n", "<leader>s", [[:s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Replace word on line" })
+map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
+map("n", "<C-g>", function()
+   require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+end, { desc = "Global search (prompt)" })
+map("n", "<C-g><C-w>", "<cmd>Telescope grep_string<CR>", { desc = "Search word under cursor" })
 
--- Make file executable
-map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make executable" })
-
--- Undotree
-map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undotree" })
-
--- Source file
-map("n", "<leader><leader>", function() vim.cmd("so") end, { desc = "Source file" })
-
--- Buffers (Ctrl+Tab opens picker, Ctrl+w closes current)
+-----------------------------------------------------------
+-- BUFFERS & WINDOWS
+-----------------------------------------------------------
 map("n", "<C-w>", "<cmd>bd<CR>", { desc = "Close buffer" })
 map("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 map("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
+map("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+map("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
--- Move between editor and tree (Ctrl+r)
-map("n", "<C-r>", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file tree" })
-
--- Window navigation
-map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
-map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
-
--- Resize windows
-map("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase height" })
-map("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease height" })
-map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease width" })
-map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase width" })
-
--- Clear highlight
-map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
-
--- Global search (like Zed Ctrl+G)
-map("n", "<C-g>", function()
-   require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
-end, { desc = "Global search with prompt" })
-map("n", "<C-g><C-w>", "<cmd>Telescope grep_string<CR>", { desc = "Global search word under cursor" })
+-----------------------------------------------------------
+-- UTILITIES
+-----------------------------------------------------------
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
+map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undo tree" })
+map("n", "<leader><leader>", function() vim.cmd("so") end, { desc = "Source current file" })
 
 -----------------------------------------------------------
 -- TELESCOPE
 -----------------------------------------------------------
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
+map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Open buffers" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Help tags" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Recent files" })
-map("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", { desc = "Quickfix" })
+map("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", { desc = "Quickfix list" })
 map("n", "<leader>fm", function()
    require("telescope.builtin").man_pages({ sections = { "ALL" } })
 end, { desc = "Man pages" })
 map("n", "<leader>fi", function()
    require("telescope.builtin").find_files({ cwd = "~/.config/nvim/" })
-end, { desc = "Find nvim config" })
+end, { desc = "Nvim config files" })
 map("n", "<C-p>", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
 
 -----------------------------------------------------------
 -- HARPOON
 -----------------------------------------------------------
-map("n", "<leader>a", function() require("harpoon"):list():add() end, { desc = "Harpoon add" })
+map("n", "<leader>a", function() require("harpoon"):list():add() end, { desc = "Add to harpoon" })
 map("n", "<C-e>", function()
    require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-end, { desc = "Harpoon menu" })
+end, { desc = "Harpoon quick menu" })
 
 -----------------------------------------------------------
 -- LSP (set on LspAttach in lsp.lua)
@@ -161,5 +145,15 @@ end, { desc = "Harpoon menu" })
 -- gr = references, gs = signature help
 -- gl = diagnostic float, F2 = rename
 -- F3 = format, F4 = code action
--- <leader>li = LSP info
-map("n", "<leader>li", ":checkhealth vim.lsp<CR>", { desc = "LSP Info" })
+map("n", "<leader>li", ":checkhealth vim.lsp<CR>", { desc = "LSP health check" })
+
+-----------------------------------------------------------
+-- SHORTCUT FINDER (Ctrl+. to search all keybindings)
+-----------------------------------------------------------
+map("n", "<C-.>", "<cmd>Telescope keymaps<CR>", { desc = "Search all keybindings" })
+map("i", "<C-.>", "<cmd>Telescope keymaps<CR>", { desc = "Search all keybindings" })
+map("v", "<C-.>", "<cmd>Telescope keymaps<CR>", { desc = "Search all keybindings" })
+map("t", "<C-.>", function()
+   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
+   vim.schedule(function() vim.cmd("Telescope keymaps") end)
+end, { noremap = true, silent = true, desc = "Search all keybindings" })

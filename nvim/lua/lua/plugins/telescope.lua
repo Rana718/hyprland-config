@@ -18,7 +18,16 @@ return {
             },
             file_ignore_patterns = { "node_modules", ".git/" },
          },
-         pickers = { find_files = { hidden = true } },
+         pickers = {
+            find_files = { hidden = true },
+            keymaps = {
+               -- Only show keymaps that have descriptions
+               filter = function(mapping)
+                  return mapping.desc ~= nil and mapping.desc ~= ""
+               end,
+               show_plug = false,
+            },
+         },
       })
       pcall(require("telescope").load_extension, "fzf")
    end,

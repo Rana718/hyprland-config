@@ -244,6 +244,81 @@ vim.keymap.set("t", "<C-S-v>", function()
    vim.api.nvim_feedkeys(text, "t", true)
 end, { noremap = true, silent = true, desc = "Paste in terminal" })
 
+-- ── Clickable Error Links (Ctrl+Click to jump to file:line) ──
+
+local function open_file_at_cursor()
+   -- Get the line under cursor in terminal buffer
+   local line = vim.api.nvim_get_current_line()
+   local col = vim.fn.col(".")
+
+   -- Try to find a file:line:col pattern around cursor position
+   -- Matches patterns like: path/file.go:123:45 or path/file.go:123
+   local patterns = {
+      "([%w%._/%-]+%.%w+):(%d+):(%d+)",  -- file:line:col
+      "([%w%._/%-]+%.%w+):(%d+)",          -- file:line
+   }
+
+   local file, lnum, col_num
+   for _, pat in ipairs(patterns) do
+      -- Search the whole line for matches and find the one closest to cursor
+      local search_start = 1
+      while true do
+         local s, e, f, l, c = line:find(pat, search_start)
+         if not s then break end
+         if col >= s and col <= e then
+            file, lnum, col_num = f, tonumber(l), tonumber(c)
+            break
+         end
+         search_start = e + 1
+      end
+      if file then break end
+   end
+
+   -- Fallback: just find the first match on the line
+   if not file then
+      for _, pat in ipairs(patterns) do
+         local f, l, c = line:match(pat)
+         if f then
+            file, lnum, col_num = f, tonumber(l), tonumber(c)
+            break
+         end
+      end
+   end
+
+   if not file or not lnum then
+      vim.notify("No file:line pattern found on this line", vim.log.levels.WARN)
+      return
+   end
+
+   -- Resolve relative path to absolute
+   local abs_path = vim.fn.fnamemodify(file, ":p")
+   if vim.fn.filereadable(abs_path) == 0 then
+      -- Try from cwd
+      abs_path = vim.fn.getcwd() .. "/" .. file
+      if vim.fn.filereadable(abs_path) == 0 then
+         vim.notify("File not found: " .. file, vim.log.levels.ERROR)
+         return
+      end
+   end
+
+   -- Hide terminal and open the file
+   hide_all_terminals()
+   vim.cmd("edit " .. vim.fn.fnameescape(abs_path))
+   vim.api.nvim_win_set_cursor(0, { lnum, (col_num or 1) - 1 })
+   -- Center the screen on the line
+   vim.cmd("normal! zz")
+end
+
+-- Ctrl+Click in terminal mode (exit terminal mode first, then jump)
+vim.keymap.set("t", "<C-CR>", function()
+   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
+   vim.schedule(open_file_at_cursor)
+end, { noremap = true, silent = true, desc = "Jump to file:line under cursor" })
+
+-- Normal mode in terminal buffer (after Esc Esc)
+vim.keymap.set("n", "gf", open_file_at_cursor, { noremap = true, silent = true, desc = "Jump to file:line under cursor" })
+vim.keymap.set("n", "<C-CR>", open_file_at_cursor, { noremap = true, silent = true, desc = "Jump to file:line under cursor" })
+
 -- Normal mode: Ctrl+` context-aware (buffer picker or hide terminal)
 vim.keymap.set("n", "<C-`>", function()
    if any_terminal_visible() then

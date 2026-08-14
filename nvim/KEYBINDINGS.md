@@ -1,6 +1,6 @@
 # Neovim Keybindings
 
-> **Leader key** = `Space`  |  **C** = `Ctrl`  |  **A** = `Alt`  |  **S** = `Shift`
+> **Leader key** = `Space`  |  **Ctrl** = `Ctrl`  |  **Alt** = `Alt`  |  **Shift** = `Shift`
 
 ---
 
@@ -9,15 +9,15 @@
 | Key | Mode | Action |
 |-----|------|--------|
 | `Esc` | Normal | Clear search highlight |
-| `Space h` | Normal | Clear search highlight |
 | `U` | Normal | Redo |
 | `J` | Normal | Join lines (keep cursor) |
 | `Q` | Normal | Disabled (no Ex mode) |
-| `Alt+q` | Normal | Force quit nvim |
+| `Alt+Q` | Normal | Force quit nvim |
 | `Space q` | Normal | Quit |
 | `Space qa` | Normal | Force quit all |
 | `Space w` | Normal | Close buffer |
-| `Space <leader>` | Normal | Source current file |
+| `Space Space` | Normal | Source current file |
+| `Ctrl+.` | Any | Search all keybindings |
 
 ---
 
@@ -25,15 +25,15 @@
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `Ctrl+h` | Normal | Move to left window |
-| `Ctrl+l` | Normal | Move to right window |
-| `Ctrl+k` | Normal | Move to upper window |
-| `Ctrl+j` | Normal | Next quickfix item |
-| `Ctrl+d` | Normal | Scroll down (centered) |
-| `Ctrl+u` | Normal | Scroll up (centered) |
+| `Ctrl+H` | Normal | Move to left window |
+| `Ctrl+L` | Normal | Move to right window |
+| `Ctrl+K` | Normal | Move to upper window |
+| `Ctrl+J` | Normal | Next quickfix item |
+| `Ctrl+D` | Normal | Scroll down (centered) |
+| `Ctrl+U` | Normal | Scroll up (centered) |
 | `n` / `N` | Normal | Next/prev search match (centered) |
-| `Shift+l` | Normal | Next buffer |
-| `Shift+h` | Normal | Previous buffer |
+| `Shift+L` | Normal | Next buffer |
+| `Shift+H` | Normal | Previous buffer |
 | `Ctrl+Up/Down` | Normal | Resize window height |
 | `Ctrl+Left/Right` | Normal | Resize window width |
 
@@ -43,12 +43,11 @@
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `Ctrl+n` | Normal | Toggle file tree |
+| `Ctrl+N` | Normal | Toggle file tree |
 | `Space e` | Normal | Find current file in tree |
 | `Space \` | Normal | Collapse all tree entries |
-| `Ctrl+r` | Normal | Focus file tree |
-| `Ctrl+r` | In tree | Go back to editor |
-| `Ctrl+b` | Insert | Toggle tree |
+| `Ctrl+R` | Normal | Focus file tree |
+| `Ctrl+B` | Insert | Toggle tree |
 
 ---
 
@@ -56,10 +55,10 @@
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `Ctrl+`` | Normal | Open file picker (cycle open files) |
-| `Ctrl+w` | Normal | Close current buffer |
-| `Shift+l` | Normal | Next buffer |
-| `Shift+h` | Normal | Previous buffer |
+| `Ctrl+`` | Normal | Buffer picker / hide terminal |
+| `Ctrl+W` | Normal | Close current buffer |
+| `Shift+L` | Normal | Next buffer |
+| `Shift+H` | Normal | Previous buffer |
 
 ---
 
@@ -67,12 +66,14 @@
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `Ctrl+\` | Normal | Toggle floating terminal |
+| `Ctrl+\` | Normal/Terminal | Toggle floating terminal |
 | `Ctrl+Shift+\` | Normal/Terminal | New terminal |
 | `Ctrl+`` | Terminal | Cycle between terminals |
-| `Ctrl+w` | Terminal | Close current terminal |
+| `Ctrl+W` | Terminal | Close current terminal |
 | `Ctrl+Shift+V` | Terminal | Paste from clipboard |
 | `Esc Esc` | Terminal | Exit terminal mode |
+| `Ctrl+Enter` | Terminal | Jump to file:line under cursor |
+| `gf` | Normal (in terminal) | Jump to file:line under cursor |
 | `Space ft` | Normal | Toggle floating terminal |
 
 ---
@@ -81,21 +82,22 @@
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `Ctrl+p` / `Space ff` | Normal | Find files |
-| `Ctrl+G` | Normal | Global search with custom prompt |
-| `Ctrl+G` → `w` | Normal | Global search word under cursor |
+| `Ctrl+P` | Normal/Insert | Find files |
+| `Ctrl+G` | Normal | Global search with prompt |
+| `Ctrl+G Ctrl+W` | Normal | Search word under cursor |
+| `Space ff` | Normal | Find files |
 | `Space fb` | Normal | Open buffers |
 | `Space fo` | Normal | Recent files |
-| `Alt+r` | Normal | Recent files |
 | `Space fh` | Normal | Help tags |
 | `Space fm` | Normal | Man pages |
 | `Space fq` | Normal | Quickfix list |
-| `Space fi` | Normal | Find nvim config files |
+| `Space fi` | Normal | Nvim config files |
 | `Space o` | Normal | Document outline/symbols |
 | `Space p` | Normal | Command palette |
+| `Alt+R` | Normal | Recent files |
 | **Inside Telescope** | | |
-| `Ctrl+j` / `Ctrl+k` | Picker | Move up/down |
-| `Ctrl+q` | Picker | Send to quickfix |
+| `Ctrl+J` / `Ctrl+K` | Picker | Move down/up |
+| `Ctrl+Q` | Picker | Send to quickfix |
 | `Enter` | Picker | Open selected |
 | `Esc` | Picker | Close |
 
@@ -106,7 +108,30 @@
 | Key | Mode | Action |
 |-----|------|--------|
 | `Space a` | Normal | Add file to harpoon |
-| `Ctrl+e` | Normal | Open harpoon menu |
+| `Ctrl+E` | Normal | Open harpoon menu |
+
+---
+
+## Git (gitsigns + fugitive)
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `]c` | Normal | Next git hunk |
+| `[c` | Normal | Previous git hunk |
+| `Space gs` | Normal/Visual | Stage hunk |
+| `Space gr` | Normal/Visual | Reset hunk |
+| `Space gS` | Normal | Stage entire buffer |
+| `Space gu` | Normal | Undo stage hunk |
+| `Space gR` | Normal | Reset entire buffer |
+| `Space gp` | Normal | Preview hunk inline |
+| `Space gb` | Normal | Blame current line |
+| `Space gd` | Normal | Diff this file |
+| `Space gD` | Normal | Diff against last commit |
+| `Space td` | Normal | Toggle show deleted lines |
+| `:Git` | Command | Git status |
+| `:Git commit` | Command | Commit |
+| `:Git push` | Command | Push |
+| `:Git diff` | Command | Diff |
 
 ---
 
@@ -137,32 +162,18 @@
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `dd` | Normal | Delete line (no copy) |
-| `Space d` | Normal/Visual | Delete to void (no copy) |
+| `dd` | Normal | Delete line (no yank) |
+| `Space d` | Normal/Visual | Delete to void register |
 | `Space p` | Visual | Paste without overwrite |
 | `J` / `K` | Visual | Move selection down/up |
-| `Space s` | Normal | Replace word under cursor (on line) |
+| `Space s` | Normal | Replace word under cursor |
 | `Space x` | Normal | Make file executable |
-| `Ctrl+[` | Normal | Fold |
-| `Ctrl+]` | Normal | Unfold |
+| `Ctrl+[` | Normal | Fold block |
+| `Ctrl+]` | Normal | Unfold block |
 | `Ctrl+Alt+[` | Normal | Fold all |
 | `Ctrl+Alt+]` | Normal | Unfold all |
 | `gcc` | Normal | Toggle comment line |
 | `gc` | Visual | Toggle comment selection |
-
----
-
-## Macros
-
-| Key | Mode | Action |
-|-----|------|--------|
-| `qa` | Normal | Start recording macro to register `a` |
-| `q` | Normal | Stop recording |
-| `@a` | Normal | Play macro `a` |
-| `@@` | Normal | Repeat last macro |
-| `5@a` | Normal | Play macro 5 times |
-
-> Macro recording shows `● REC @a` in statusbar. Playing shows `▶ @a`.
 
 ---
 
@@ -173,18 +184,7 @@
 | `Space co` | Normal | Open quickfix |
 | `Space cl` | Normal | Close quickfix |
 | `Space cn` | Normal | Next quickfix item |
-| `Space cp` | Normal | Prev quickfix item |
-
----
-
-## Git (Fugitive)
-
-| Command | Action |
-|---------|--------|
-| `:Git` | Git status |
-| `:Git commit` | Commit |
-| `:Git push` | Push |
-| `:Git diff` | Diff |
+| `Space cp` | Normal | Previous quickfix item |
 
 ---
 
@@ -192,20 +192,20 @@
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `Space u` | Normal | Toggle undotree |
+| `Space u` | Normal | Toggle undo tree |
 
 ---
 
-## Insert Mode (Zed-style)
+## Insert Mode
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `Ctrl+c` | Insert | Escape |
-| `Ctrl+v` | Insert | Paste |
-| `Ctrl+x` | Insert | Cut line |
-| `Ctrl+y` | Insert | Redo |
-| `Ctrl+a` | Insert | Select all |
-| `Ctrl+p` | Insert | Find files |
+| `Ctrl+C` | Insert | Escape |
+| `Ctrl+V` | Insert | Paste from clipboard |
+| `Ctrl+X` | Insert | Cut line |
+| `Ctrl+Y` | Insert | Redo |
+| `Ctrl+A` | Insert | Select all |
+| `Ctrl+P` | Insert | Find files |
 
 ---
 
@@ -220,3 +220,15 @@
 | `c` | Nvim config |
 | `l` | Lazy plugins |
 | `q` | Quit |
+
+---
+
+## Macros
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `qa` | Normal | Start recording macro to register `a` |
+| `q` | Normal | Stop recording |
+| `@a` | Normal | Play macro `a` |
+| `@@` | Normal | Repeat last macro |
+| `5@a` | Normal | Play macro 5 times |
