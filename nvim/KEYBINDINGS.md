@@ -48,6 +48,14 @@
 | `Space \` | Normal | Collapse all tree entries |
 | `Ctrl+R` | Normal | Focus file tree |
 | `Ctrl+B` | Insert | Toggle tree |
+| `a` | In tree | Create new file/folder (end with `/` for folder) |
+| `r` | In tree | Rename |
+| `d` | In tree | Delete |
+| `c` | In tree | Copy file |
+| `x` | In tree | Cut file |
+| `p` | In tree | Paste file |
+| `y` | In tree | Copy filename |
+| `Space pi` | In tree | Paste image from clipboard |
 
 ---
 
@@ -174,6 +182,7 @@
 | `Ctrl+Alt+]` | Normal | Unfold all |
 | `gcc` | Normal | Toggle comment line |
 | `gc` | Visual | Toggle comment selection |
+| `Space pi` | Normal | Paste image from clipboard (in editor/tree) |
 
 ---
 

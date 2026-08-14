@@ -50,6 +50,27 @@ return {
                error = "",
             },
          },
+         on_attach = function(bufnr)
+            local api = require("nvim-tree.api")
+            api.config.mappings.default_on_attach(bufnr)
+
+            -- Paste image from clipboard into directory under cursor
+            vim.keymap.set("n", "<leader>pi", function()
+               local node = api.tree.get_node_under_cursor()
+               local path = node.absolute_path
+               if node.type ~= "directory" then
+                  path = vim.fn.fnamemodify(path, ":h")
+               end
+               vim.ui.input({ prompt = "Image name: " }, function(name)
+                  if not name or name == "" then return end
+                  if not name:match("%..+$") then name = name .. ".png" end
+                  local full_path = path .. "/" .. name
+                  local result = vim.fn.system("wl-paste > " .. vim.fn.shellescape(full_path))
+                  api.tree.reload()
+                  vim.notify("Image saved: " .. name, vim.log.levels.INFO)
+               end)
+            end, { buffer = bufnr, desc = "Paste image from clipboard" })
+         end,
       })
 
       -- VS Code-like git colors for nvim-tree file names

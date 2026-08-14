@@ -20,6 +20,7 @@ tasks:
          - cp -r ~/.config/nvim/init.lua nvim/init.lua
          - cp -r ~/.config/nvim/KEYBINDINGS.md nvim/KEYBINDINGS.md
          - cp -r ~/.config/nvim/lua nvim/lua
+         - cp -r ~/.config/yazi/* yazi/
          - cp -r ~/.config/nvim/plugin nvim/plugin
          - sudo cp /usr/share/sddm/themes/sugar-candy/theme.conf sddm/theme.conf
          - sudo cp /etc/sddm.conf.d/theme.conf sddm/sddm.conf
@@ -36,6 +37,7 @@ tasks:
          - cp -r wlogout/* ~/.config/wlogout/
          - cp -r alacritty/* ~/.config/alacritty/
          - cp -r swappy/* ~/.config/swappy/
+         - cp -r yazi/* ~/.config/yazi/
          - cp -r networkmanager-dmenu/* ~/.config/networkmanager-dmenu/
          - cp fish/config.fish ~/.config/fish/config.fish
          - cp fish/fish_plugins ~/.config/fish/fish_plugins

@@ -1,0 +1,2 @@
+#!/bin/sh
+wl-paste > "clipboard_$(date +%s).png"

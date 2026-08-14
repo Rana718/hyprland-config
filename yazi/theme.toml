@@ -1,0 +1,107 @@
+# TokyoNight theme for Yazi (matching Kitty/Nvim config)
+
+[mgr]
+cwd = { fg = "#7aa2f7" }
+find_keyword = { fg = "#e0af68", bold = true }
+find_position = { fg = "#9ece6a", italic = true }
+marker_selected = { fg = "#9ece6a", bg = "#9ece6a" }
+marker_copied = { fg = "#e0af68", bg = "#e0af68" }
+marker_cut = { fg = "#f7768e", bg = "#f7768e" }
+count_copied = { fg = "#1e1e24", bg = "#e0af68" }
+count_cut = { fg = "#1e1e24", bg = "#f7768e" }
+count_selected = { fg = "#1e1e24", bg = "#9ece6a" }
+border_symbol = "│"
+border_style = { fg = "#414868" }
+
+[tabs]
+active = { fg = "#c0caf5", bg = "#24283b" }
+inactive = { fg = "#545c7e", bg = "#1e1e24" }
+
+[mode]
+normal_main = { fg = "#1e1e24", bg = "#7aa2f7", bold = true }
+normal_alt = { fg = "#7aa2f7", bg = "#24283b" }
+select_main = { fg = "#1e1e24", bg = "#9ece6a", bold = true }
+select_alt = { fg = "#9ece6a", bg = "#24283b" }
+unset_main = { fg = "#1e1e24", bg = "#bb9af7", bold = true }
+unset_alt = { fg = "#bb9af7", bg = "#24283b" }
+
+[status]
+overall = { fg = "#c0caf5", bg = "#24283b" }
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+perm_type = { fg = "#7aa2f7" }
+perm_read = { fg = "#e0af68" }
+perm_write = { fg = "#f7768e" }
+perm_exec = { fg = "#9ece6a" }
+perm_sep = { fg = "#545c7e" }
+progress_label = { fg = "#c0caf5", bold = true }
+progress_normal = { fg = "#7aa2f7", bg = "#24283b" }
+progress_error = { fg = "#f7768e", bg = "#24283b" }
+
+[input]
+border = { fg = "#7aa2f7" }
+title = {}
+value = {}
+selected = { reversed = true }
+
+[pick]
+border = { fg = "#7aa2f7" }
+active = { fg = "#bb9af7" }
+inactive = {}
+
+[confirm]
+border = { fg = "#7aa2f7" }
+title = { fg = "#c0caf5", bold = true }
+body = { fg = "#a9b1d6" }
+btn_yes = { fg = "#1e1e24", bg = "#9ece6a", bold = true }
+btn_no = { fg = "#1e1e24", bg = "#f7768e", bold = true }
+btn_labels = ["Yes", "No"]
+
+[tasks]
+border = { fg = "#7aa2f7" }
+title = {}
+hovered = { underline = true }
+
+[which]
+mask = { bg = "#1e1e24" }
+cand = { fg = "#7dcfff" }
+rest = { fg = "#545c7e" }
+desc = { fg = "#bb9af7" }
+separator = "  "
+separator_style = { fg = "#414868" }
+
+[help]
+on = { fg = "#bb9af7" }
+run = { fg = "#9ece6a" }
+desc = { fg = "#c0caf5" }
+hovered = { bg = "#292e42", bold = true }
+footer = { fg = "#545c7e", bg = "#1e1e24" }
+
+[notify]
+title_info = { fg = "#9ece6a" }
+title_warn = { fg = "#e0af68" }
+title_error = { fg = "#f7768e" }
+
+[filetype]
+rules = [
+   { mime = "image/*", fg = "#bb9af7" },
+   { mime = "{audio,video}/*", fg = "#e0af68" },
+   { mime = "application/zip", fg = "#f7768e" },
+   { mime = "application/gzip", fg = "#f7768e" },
+   { mime = "application/x-tar", fg = "#f7768e" },
+   { mime = "application/pdf", fg = "#7dcfff" },
+   { url = "*.lua", fg = "#7aa2f7" },
+   { url = "*.go", fg = "#7dcfff" },
+   { url = "*.rs", fg = "#f7768e" },
+   { url = "*.js", fg = "#e0af68" },
+   { url = "*.ts", fg = "#7aa2f7" },
+   { url = "*.py", fg = "#9ece6a" },
+   { url = "*.md", fg = "#c0caf5" },
+   { url = "*.json", fg = "#e0af68" },
+   { url = "*.toml", fg = "#e0af68" },
+   { url = "*.yaml", fg = "#9ece6a" },
+   { url = "*.html", fg = "#f7768e" },
+   { url = "*.css", fg = "#7dcfff" },
+   { url = "*", fg = "#c0caf5" },
+   { url = "*/", fg = "#7aa2f7" },
+]

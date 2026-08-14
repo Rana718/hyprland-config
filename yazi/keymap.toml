@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on   = "P"
+run  = "shell '~/.config/yazi/paste-image' --confirm"
+desc = "Paste image from clipboard"

@@ -71,8 +71,8 @@ hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- ─── Screenshots ─────────────────────────────────────────────────────────────
-hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | swappy -f -'))
-hl.bind(mod .. " + Print", hl.dsp.exec_cmd("grim - | swappy -f -"))
+hl.bind("Print", hl.dsp.exec_cmd('grim -s 1.2 -g "$(slurp)" - | swappy -f -'))
+hl.bind(mod .. " + Print", hl.dsp.exec_cmd("grim -s 1.2 - | swappy -f -"))
 hl.bind(mod .. " + SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m window --raw | swappy -f -"))
 
 -- ─── Screen Recording ────────────────────────────────────────────────────────
