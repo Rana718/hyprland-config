@@ -33,12 +33,18 @@ map("n", "<leader>qa", "<cmd>qa!<CR>", { desc = "Close all" })
 map("n", "<A-q>", "<cmd>qa!<CR>", { desc = "Force quit nvim" })
 
 -----------------------------------------------------------
--- FOLDING
+-- GIT HUNK NAVIGATION
 -----------------------------------------------------------
-map("n", "<C-[>", "zc", { desc = "Fold block" })
-map("n", "<C-]>", "zo", { desc = "Unfold block" })
-map("n", "<C-A-[>", "zM", { desc = "Fold all" })
-map("n", "<C-A-]>", "zR", { desc = "Unfold all" })
+map("n", "<C-]>", function()
+   if vim.wo.diff then return "<C-]>" end
+   vim.schedule(function() require("gitsigns").next_hunk({ wrap = false }) end)
+   return "<Ignore>"
+end, { expr = true, desc = "Next git change" })
+map("n", "<C-[>", function()
+   if vim.wo.diff then return "<C-[>" end
+   vim.schedule(function() require("gitsigns").prev_hunk({ wrap = false }) end)
+   return "<Ignore>"
+end, { expr = true, desc = "Prev git change" })
 
 -----------------------------------------------------------
 -- PANELS & NAVIGATION

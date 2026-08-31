@@ -56,6 +56,7 @@
 | `p` | In tree | Paste file |
 | `y` | In tree | Copy filename |
 | `Space pi` | In tree | Paste image from clipboard |
+| `Ctrl+K` | In tree | Go to parent folder (scoped to tree root) |
 
 ---
 
@@ -124,8 +125,8 @@
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `]c` | Normal | Next git hunk |
-| `[c` | Normal | Previous git hunk |
+| `Ctrl+]` | Normal | Next git change |
+| `Ctrl+[` | Normal | Previous git change |
 | `Space gs` | Normal/Visual | Stage hunk |
 | `Space gr` | Normal/Visual | Reset hunk |
 | `Space gS` | Normal | Stage entire buffer |
@@ -176,10 +177,6 @@
 | `J` / `K` | Visual | Move selection down/up |
 | `Space s` | Normal | Replace word under cursor |
 | `Space x` | Normal | Make file executable |
-| `Ctrl+[` | Normal | Fold block |
-| `Ctrl+]` | Normal | Unfold block |
-| `Ctrl+Alt+[` | Normal | Fold all |
-| `Ctrl+Alt+]` | Normal | Unfold all |
 | `gcc` | Normal | Toggle comment line |
 | `gc` | Visual | Toggle comment selection |
 | `Space pi` | Normal | Paste image from clipboard (in editor/tree) |

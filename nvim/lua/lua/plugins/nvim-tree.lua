@@ -43,16 +43,25 @@ return {
          diagnostics = {
             enable = true,
             show_on_dirs = true,
-            icons = {
-               hint = "",
-               info = "",
-               warning = "",
-               error = "",
+            severity = {
+               min = vim.diagnostic.severity.HINT,
+               max = vim.diagnostic.severity.ERROR,
             },
          },
          on_attach = function(bufnr)
             local api = require("nvim-tree.api")
             api.config.mappings.default_on_attach(bufnr)
+
+            -- Go to parent folder (scoped to tree root)
+            vim.keymap.set("n", "<C-k>", function()
+               local node = api.tree.get_node_under_cursor()
+               if not node or not node.parent then return end
+               -- Don't go above the tree root
+               local root = api.tree.get_nodes().absolute_path
+               if node.parent.absolute_path and node.parent.absolute_path:len() >= root:len() then
+                  api.node.navigate.parent()
+               end
+            end, { buffer = bufnr, desc = "Go to parent folder (scoped)" })
 
             -- Paste image from clipboard into directory under cursor
             vim.keymap.set("n", "<leader>pi", function()

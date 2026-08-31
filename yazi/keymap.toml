@@ -2,3 +2,9 @@
 on   = "P"
 run  = "shell '~/.config/yazi/paste-image' --confirm"
 desc = "Paste image from clipboard"
+
+
+[[mgr.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter folder (quit+cd) or open file"

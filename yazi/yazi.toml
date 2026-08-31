@@ -3,6 +3,8 @@ sort_by = "natural"
 sort_dir_first = true
 show_hidden = true
 show_symlink = true
+confirm_on_quit = false
+no_confirm_quit = true
 
 [opener]
 edit = [

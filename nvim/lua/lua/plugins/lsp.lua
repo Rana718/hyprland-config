@@ -184,6 +184,13 @@ return {
             capabilities = caps,
          }
 
+         vim.lsp.config['svelte'] = {
+            cmd = { 'svelteserver', '--stdio' },
+            filetypes = { 'svelte' },
+            root_markers = { 'svelte.config.js', 'svelte.config.ts', 'package.json', '.git' },
+            capabilities = caps,
+         }
+
          vim.lsp.config['bashls'] = {
             cmd = { 'bash-language-server', 'start' },
             filetypes = { 'sh', 'bash' },
@@ -214,7 +221,7 @@ return {
       opts = {
          ensure_installed = {
             "lua_ls", "ts_ls", "pyright", "rust_analyzer",
-            "gopls", "clangd", "cssls", "jsonls", "html", "bashls",
+            "gopls", "clangd", "cssls", "jsonls", "html", "bashls", "svelte",
          },
          automatic_enable = true,
       },

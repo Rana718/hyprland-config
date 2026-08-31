@@ -53,8 +53,8 @@ hl.config({
    },
    decoration = {
       rounding         = 10,
-      active_opacity   = 0.89,
-      inactive_opacity = 0.89,
+      active_opacity   = 1, -- active_opacity   = 0.89,
+      inactive_opacity = 1, -- inactive_opacity = 0.89,
       blur             = { enabled = true, size = 4, passes = 2, new_optimizations = true, xray = false, ignore_opacity = true },
       shadow           = { enabled = false },
    },

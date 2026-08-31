@@ -29,19 +29,6 @@ return {
                vim.keymap.set(mode, l, r, opts)
             end
 
-            -- Navigation between hunks
-            map("n", "]c", function()
-               if vim.wo.diff then return "]c" end
-               vim.schedule(function() gs.next_hunk() end)
-               return "<Ignore>"
-            end, { expr = true, desc = "Next git hunk" })
-
-            map("n", "[c", function()
-               if vim.wo.diff then return "[c" end
-               vim.schedule(function() gs.prev_hunk() end)
-               return "<Ignore>"
-            end, { expr = true, desc = "Prev git hunk" })
-
             -- Actions
             map("n", "<leader>gs", gs.stage_hunk, { desc = "Stage hunk" })
             map("n", "<leader>gr", gs.reset_hunk, { desc = "Reset hunk" })
