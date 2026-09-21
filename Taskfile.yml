@@ -12,6 +12,8 @@ tasks:
          - cp -r ~/.config/wlogout/* wlogout/
          - cp -r ~/.config/alacritty/* alacritty/
          - cp -r ~/.config/swappy/* swappy/
+         - mkdir -p copyq/themes && cp ~/.config/copyq/copyq.conf copyq/ && cp ~/.config/copyq/copyq-commands.ini copyq/ 2>/dev/null || true
+         - cp -r ~/.config/copyq/themes/* copyq/themes/ 2>/dev/null || true
          - cp -r ~/.config/networkmanager-dmenu/* networkmanager-dmenu/
          - cp ~/.config/fish/config.fish fish/config.fish
          - cp ~/.config/fish/fish_plugins fish/fish_plugins
@@ -37,6 +39,8 @@ tasks:
          - cp -r wlogout/* ~/.config/wlogout/
          - cp -r alacritty/* ~/.config/alacritty/
          - cp -r swappy/* ~/.config/swappy/
+         - mkdir -p ~/.config/copyq/themes && cp copyq/copyq.conf ~/.config/copyq/ && cp copyq/copyq-commands.ini ~/.config/copyq/ 2>/dev/null || true
+         - cp -r copyq/themes/* ~/.config/copyq/themes/ 2>/dev/null || true
          - cp -r yazi/* ~/.config/yazi/
          - cp -r networkmanager-dmenu/* ~/.config/networkmanager-dmenu/
          - cp fish/config.fish ~/.config/fish/config.fish

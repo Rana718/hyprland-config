@@ -33,7 +33,6 @@ for _, class in ipairs({ "^(brave-browser)$", "^(google-chrome)$", "^(chromium)$
    hl.window_rule({ match = { class = class }, opacity = OPAQUE })
 end
 
-
 -- ─── Firefox Picture-in-Picture ──────────────────────────────────────────────
 hl.window_rule({
    match = { class = "^(firefox)$", title = "^(Picture-in-Picture)$" },

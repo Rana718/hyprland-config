@@ -23,6 +23,7 @@ mkdir -p ~/.config/wlogout
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/kitty
 mkdir -p ~/.config/swappy
+mkdir -p ~/.config/copyq/themes
 mkdir -p ~/.config/networkmanager-dmenu
 mkdir -p ~/.config/fastfetch
 mkdir -p ~/.config/btop/themes
@@ -71,6 +72,13 @@ echo "✓ Kitty config applied"
 echo "Applying Swappy config..."
 cp -r "$DOTFILES_DIR/swappy/"* ~/.config/swappy/
 echo "✓ Swappy config applied"
+
+# ─── CopyQ ────────────────────────────────────────────────────────────────────
+echo "Applying CopyQ config..."
+cp "$DOTFILES_DIR/copyq/copyq.conf" ~/.config/copyq/
+cp "$DOTFILES_DIR/copyq/copyq-commands.ini" ~/.config/copyq/ 2>/dev/null || true
+cp -r "$DOTFILES_DIR/copyq/themes/"* ~/.config/copyq/themes/ 2>/dev/null || true
+echo "✓ CopyQ config applied"
 
 # ─── Networkmanager-dmenu ─────────────────────────────────────────────────────
 echo "Applying networkmanager-dmenu config..."

@@ -43,6 +43,11 @@ hl.config({
       no_hardware_cursors = true,
       no_break_fs_vrr     = true,
    },
+   xwayland = {
+      -- Fixes blurry/pixelated XWayland apps (e.g. Steam) under fractional scaling.
+      -- Renders them at 1x instead of upscaling from 1x -> 1.2x.
+      force_zero_scaling = true,
+   },
    misc = {
       force_default_wallpaper      = 0,
       disable_hyprland_logo        = true,
