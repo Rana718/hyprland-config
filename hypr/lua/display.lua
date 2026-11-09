@@ -62,8 +62,16 @@ hl.config({
       inactive_opacity = 1, -- inactive_opacity = 0.89,
       blur             = { enabled = true, size = 4, passes = 2, new_optimizations = true, xray = false, ignore_opacity = true },
       shadow           = { enabled = false },
+      wobble           = {
+         enabled    = true,
+         stiffness  = 200,  -- higher = snappier spring (default 200)
+         damping    = 12,   -- higher = less oscillation (default 12)
+         mass       = 1,    -- higher = more inertia (default 1)
+         intensity  = 0.2,  -- deformation strength (default 0.2)
+      },
    },
    animations = { enabled = true },
+
    dwindle = { preserve_split = true, smart_split = true },
    general = {
       gaps_in       = 4,

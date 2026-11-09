@@ -1,0 +1,147 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+    "margin-top": 4,
+    "margin-left": 8,
+    "margin-right": 8,
+    "modules-left": [
+        "custom/arch-logo",
+        "custom/power-profile",
+        "custom/separator",
+        "custom/gpu-temp",
+        "cpu",
+        "custom/cpu-temp",
+        "memory",
+        "network#speed"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "tray",
+        "custom/separator",
+        "bluetooth",
+        "network",
+        "pulseaudio#microphone",
+        "pulseaudio",
+        "battery",
+        "custom/separator",
+        "clock"
+    ],
+    "custom/arch-logo": {
+        "format": " ",
+        "tooltip": false,
+        "on-click": "rofi -show drun -show-icons"
+    },
+    "custom/power-profile": {
+        "exec": "profile=$(powerprofilesctl get); case $profile in performance) echo '{\"text\": \"󱐋 perf\", \"tooltip\": \"Performance\", \"class\": \"performance\"}';;  balanced) echo '{\"text\": \"󰾅 bal\", \"tooltip\": \"Balanced\", \"class\": \"balanced\"}';;  power-saver) echo '{\"text\": \"󰾆 saver\", \"tooltip\": \"Power Saver\", \"class\": \"power-saver\"}';;  esac",
+        "return-type": "json",
+        "interval": 2,
+        "on-click": "profile=$(powerprofilesctl get); case $profile in performance) powerprofilesctl set balanced;; balanced) powerprofilesctl set power-saver;; power-saver) powerprofilesctl set performance;; esac",
+        "tooltip": true
+    },
+    "custom/separator": {
+        "format": "|",
+        "tooltip": false
+    },
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "sort-by-number": true,
+        "active-only": false,
+        "all-outputs": false,
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+    "clock": {
+        "format": " {:%d/%m   %I:%M %p}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "on-click": "swaync-client -t -sw"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 2
+    },
+    "custom/cpu-temp": {
+        "exec": "sensors coretemp-isa-0000 2>/dev/null | awk '/Package id 0:/{gsub(/\\\\+/,\"\"); print $4}'",
+        "format": " {}",
+        "interval": 2
+    },
+    "memory": {
+        "format": " {used:.1f}G",
+        "interval": 2,
+        "tooltip-format": "RAM: {used:.1f}G / {total:.1f}G ({percentage}%)"
+    },
+    "custom/gpu-temp": {
+        "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null | tr -d ' '",
+        "format": " {}°C",
+        "interval": 2
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " Connected",
+        "format-disconnected": " Off",
+        "tooltip-format": "{ifname}\n{ipaddr}/{cidr}\nSignal: {signalStrength}%\n↓ {bandwidthDownBits} ↑ {bandwidthUpBits}",
+        "on-click": "nmcli dev wifi rescan; networkmanager_dmenu",
+        "on-click-right": "nm-connection-editor"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip-format": "{timeTo}\nPower: {power:.1f}W"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 6
+    },
+    "network#speed": {
+        "format": "↓ {bandwidthDownBits} ↑ {bandwidthUpBits}",
+        "interval": 2,
+        "tooltip": false
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-disabled": " Off",
+        "format-off": " Off",
+        "format-no-controller": "",
+        "on-click": "blueman-manager",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected"
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "tooltip-format": "Microphone: {source_volume}%\n{source_desc}"
+    }
+}
