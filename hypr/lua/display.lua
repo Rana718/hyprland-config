@@ -92,7 +92,74 @@ hl.config({
    },
 })
 
--- ─── Bezier Curves & Animations ──────────────────────────────────────────────
+-- ─── hyprexpo (workspace overview) ──────────────────────────────────────────
+-- Uses config.reloaded so it applies on every reload, not just startup
+local function applyHyprexpoConfig()
+   hl.config({
+      plugin = {
+         hyprexpo = {
+            columns               = 3,
+            dynamic_grid          = true,
+            skip_empty            = true,
+            fill_gaps             = false,
+            gaps_in               = 10,
+            gaps_out              = 16,
+            wallpaper_bg          = false,
+            bg_col                = "rgba(11111bcc)",
+            bg_image              = "/home/rana/Pictures/wallpapers/5.jpg",
+            bg_image_fit          = "cover",
+            bg_image_blur         = 8,
+            tile_rounding         = 10,
+            tile_rounding_power   = 2.0,
+            border_width          = 2,
+            border_color_current  = "rgba(00000000)",
+            border_color_focus    = "rgba(a6e3a1ff)",
+            border_color_hover    = "rgba(00000000)",
+            border_color          = "rgba(00000000)",
+            label_enable          = false,
+            label_pos             = "bottom_center",
+            label_font_size       = 12,
+            label_font_family     = "JetBrainsMono Nerd Font",
+            label_font_bold       = true,
+            label_color_current   = "rgba(89b4faff)",
+            label_color_default   = "rgba(a6adc8ff)",
+            label_color_focus     = "rgba(89b4faff)",
+            label_color_hover     = "rgba(cba6f7ff)",
+            label_bg_enable       = true,
+            label_bg_rounding     = 6,
+            label_padding         = 4,
+
+            -- ── Window icons ─────────────────────────────────────────────────
+            -- App icon drawn on top of each window's preview tile.
+            -- Requires the app to have a matching .desktop entry and icon theme.
+            window_icon_enable     = true,
+            window_icon_position   = "center",
+            window_icon_size       = 80,
+            window_icon_size_ratio = 0.25,
+            window_icon_offset_x   = 0,
+            window_icon_offset_y   = 0,
+            window_icon_bg_enable  = false,
+            window_icon_bg_color   = "rgba(00000099)",
+            window_icon_bg_rounding = 12,
+            window_icon_padding    = 4,
+
+            animate_entry         = true,
+            drag_drop_enable      = true,
+            keynav_enable         = true,
+            keynav_wrap_h         = true,
+            keynav_wrap_v         = true,
+            gesture_fingers       = 3,
+            gesture_distance      = 300,
+            gesture_direction     = "up",
+         },
+      },
+   })
+end
+
+hl.on("hyprland.start",    function() applyHyprexpoConfig() end)
+hl.on("config.reloaded",   function() applyHyprexpoConfig() end)
+
+
 local curves = {
    { "ease",     { { 0.25, 0.1 }, { 0.25, 1 } } },
    { "overshot", { { 0.05, 0.9 }, { 0.1, 1.1 } } },

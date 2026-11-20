@@ -12,6 +12,9 @@ hl.on("hyprland.start", function()
       "__VK_LAYER_NV_optimus XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"
    )
 
+   -- ─── Load plugins ────────────────────────────────────────────────────────
+   hl.exec_cmd("hyprpm reload -n")
+
    -- ─── System services ─────────────────────────────────────────────────────
    hl.exec_cmd("/usr/lib/gsd-xsettings")
    hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
